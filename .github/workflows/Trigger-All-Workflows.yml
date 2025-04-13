@@ -1,0 +1,16 @@
+name: Trigger-All-Workflows  # 主要工作流的名称
+
+on:
+  workflow_dispatch:  # 手动触发：通过 GitHub UI 来触发
+  schedule:
+    - cron: 0 20 * * 5  # 北京时间星期六凌晨4点，定时触发
+
+jobs:
+    libwrt-6-12:
+     uses: ./.github/workflows/libwrt-6.12.yml
+
+    immortalwrt:
+     uses: ./.github/workflows/immortalwrt.yml
+
+    All-Clean:
+     uses: ./.github/workflows/All-Clean.yml
