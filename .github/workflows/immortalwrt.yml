@@ -1,4 +1,4 @@
-name: Athena-immortalwrt
+name: immortalwrt
 
 on:
   workflow_dispatch:
