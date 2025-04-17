@@ -435,7 +435,14 @@ update_dns_app_menu_location() {
     fi
 }
 
- 
+fix_arm_cpuinfo() {
+    local dir="$BUILD_DIR/target/linux/generic/hack-6.12"
+    local patch_src="$BASE_PATH/patches/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch"
+
+    if [ -d "$dir" ]; then
+        cp -f "$patch_src" "$dir"
+    fi
+}
 
 
 main() {
