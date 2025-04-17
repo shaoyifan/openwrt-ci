@@ -23,12 +23,12 @@ function git_sparse_clone() {
 
 # Alist & AdGuardHome & WolPlus & AriaNg & 集客无线AC控制器 & Lucky & 雅典娜LED控制
 # git clone --depth=1 https://github.com/sbwml/luci-app-alist package/luci-app-alist
-git_sparse_clone main https://github.com/kenzok8/small-package  luci-app-nikki nikki luci-app-pushbot
+git_sparse_clone main https://github.com/kenzok8/small-package  luci-app-nikki nikki
 git_sparse_clone main https://github.com/VIKINGYFY/packages luci-app-wolplus
 git_sparse_clone master https://github.com/immortalwrt/packages net/ariang
 # git clone --depth=1 https://github.com/lwb1978/openwrt-gecoosac package/openwrt-gecoosac
 # git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/luci-app-lucky
-git clone --depth=1 https://github.com/NONGFAH/luci-app-athena-led package/luci-app-athena-led
+git clone --depth=1 https://github.com/shaoyifan/luci-app-athena-led package/luci-app-athena-led
 chmod +x package/luci-app-athena-led/root/etc/init.d/athena_led package/luci-app-athena-led/root/usr/sbin/athena-led
 
 ./scripts/feeds update -a
