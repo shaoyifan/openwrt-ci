@@ -463,6 +463,7 @@ main() {
     update_nss_pbuf_performance
     set_build_signature
     update_nss_diag
+    fix_arm_cpuinfo
     update_menu_location
     fix_compile_coremark
     update_dnsmasq_conf
