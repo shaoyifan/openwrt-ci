@@ -384,9 +384,30 @@ function update_script_priority() {
    
 }
 
+support_fw4_adg() {
+    local src_path="$BASE_PATH/patches/AdGuardHome"
+    local dst_path="$BUILD_DIR/package/feeds/small8/luci-app-adguardhome/root/etc/init.d/AdGuardHome"
+    # 验证源路径是否文件存在且是文件，目标路径目录存在且脚本路径合法
+    if [ -f "$src_path" ] && [ -d "${dst_path%/*}" ] && [ -f "$dst_path" ]; then
+        # 使用 install 命令替代 cp 以确保权限和备份处理
+        install -Dm 755 "$src_path" "$dst_path"
+        echo "已更新AdGuardHome启动脚本"
+    fi
+}
+ 
+ 
+function add_backup_info_to_sysupgrade() {
+    local conf_path="$BUILD_DIR/package/base-files/files/etc/sysupgrade.conf"
 
+    if [ -f "$conf_path" ]; then
+        cat >"$conf_path" <<'EOF'
+/etc/AdGuardHome.yaml
  
- 
+EOF
+    fi
+}
+
+
 update_proxy_app_menu_location() {
     # passwall
     local passwall_path="$BUILD_DIR/package/feeds/small8/luci-app-passwall/luasrc/controller/passwall.lua"
@@ -435,14 +456,6 @@ update_dns_app_menu_location() {
     fi
 }
 
-fix_arm_cpuinfo() {
-    local dir="$BUILD_DIR/target/linux/generic/hack-6.12"
-    local patch_src="$BASE_PATH/patches/312-arm64-cpuinfo-Add-model-name-in-proc-cpuinfo-for-64bit-ta.patch"
-
-    if [ -d "$dir" ]; then
-        cp -f "$patch_src" "$dir"
-    fi
-}
 
 
 main() {
@@ -463,7 +476,8 @@ main() {
     update_nss_pbuf_performance
     set_build_signature
     update_nss_diag
-    fix_arm_cpuinfo
+    support_fw4_adg
+    add_backup_info_to_sysupgrade
     update_menu_location
     fix_compile_coremark
     update_dnsmasq_conf
