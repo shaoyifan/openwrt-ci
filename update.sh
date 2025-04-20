@@ -476,12 +476,12 @@ main() {
     update_nss_pbuf_performance
     set_build_signature
     update_nss_diag
-    support_fw4_adg
     add_backup_info_to_sysupgrade
     update_menu_location
     fix_compile_coremark
     update_dnsmasq_conf
     install_feeds
+    support_fw4_adg
     update_script_priority
     # update_proxy_app_menu_location
     # update_dns_app_menu_location
