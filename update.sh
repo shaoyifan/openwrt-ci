@@ -320,13 +320,7 @@ set_build_signature() {
 
  
 
-update_nss_diag() {
-    local file="$BUILD_DIR/package/kernel/mac80211/files/nss_diag.sh"
-    if [ -d "$(dirname "$file")" ] && [ -f "$file" ]; then
-        \rm -f "$file"
-        install -Dm755 "$BASE_PATH/patches/nss_diag.sh" "$file"
-    fi
-}
+ 
 
 update_menu_location() {
     local samba4_path="$BUILD_DIR/feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json"
@@ -508,7 +502,6 @@ main() {
     add_ax6600_led
     update_nss_pbuf_performance
     set_build_signature
-    update_nss_diag
     add_backup_info_to_sysupgrade
     update_menu_location
     fix_compile_coremark
