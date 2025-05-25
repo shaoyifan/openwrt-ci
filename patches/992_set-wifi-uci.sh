@@ -16,9 +16,20 @@ configure_wifi() {
     uci -q batch <<EOF
 set wireless.radio${radio}.channel="${channel}"
 set wireless.radio${radio}.htmode="${htmode}"
+set wireless.radio${radio}.mu_beamformer='1'
+set wireless.radio${radio}.country='CN'
 set wireless.radio${radio}.txpower="${txpower}"
+set wireless.radio${radio}.cell_density='0'
+set wireless.radio${radio}.disabled='0'
 set wireless.default_radio${radio}.ssid="${ssid}"
+set wireless.default_radio${radio}.encryption='psk2+ccmp'
 set wireless.default_radio${radio}.key="${key}"
+set wireless.default_radio${radio}.ieee80211k='1'
+set wireless.default_radio${radio}.time_advertisement='2'
+set wireless.default_radio${radio}.time_zone='CST-8'
+set wireless.default_radio${radio}.bss_transition='1'
+set wireless.default_radio${radio}.wnm_sleep_mode='1'
+set wireless.default_radio${radio}.wnm_sleep_mode_no_keys='1'
 EOF
 }
 
