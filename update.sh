@@ -498,7 +498,7 @@ main() {
     add_wifi_default_set
     update_default_lan_addr
     # remove_something_nss_kmod
-    update_affinity_script
+    # update_affinity_script
     chanage_cpuusage
     add_ax6600_led
     update_nss_pbuf_performance
