@@ -21,6 +21,7 @@ set wireless.radio${radio}.country='CN'
 set wireless.radio${radio}.txpower="${txpower}"
 set wireless.radio${radio}.cell_density='0'
 set wireless.radio${radio}.disabled='0'
+set wireless.default_radio${radio}.max_inactivity='3600'
 set wireless.default_radio${radio}.ssid="${ssid}"
 set wireless.default_radio${radio}.encryption='psk2+ccmp'
 set wireless.default_radio${radio}.key="${key}"
